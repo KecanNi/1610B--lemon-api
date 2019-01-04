@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var mongo = require('../mongo');
+
 /* GET users listing. */
 router.get('/api/adduser', function (req, res, next) {
   var name = req.query.name || '';
@@ -15,6 +16,7 @@ router.get('/api/adduser', function (req, res, next) {
         } else {
           res.json({ code: 1, data: results.insertedIds })
         }
+        con.close();
       })
     }
   })
